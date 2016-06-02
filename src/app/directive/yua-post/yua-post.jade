@@ -1,0 +1,10 @@
+div._directive_-yua-post
+    div.yua-post
+        div.header(layout='row', layout-align='start center')
+            div.title {{ ctrl.title || '[TITLE]' }}
+            div(flex)
+            div.time {{ ctrl.time }}
+        div.body
+            div.content {{ ctrl.content || '[CONTENT]'}}
+        //div.footer
+        //    div.meta META

@@ -1,0 +1,24 @@
+div._state_home(layout-fill, layout='row', layout-align='start stretch')
+    div.left-sidebar(layout='column')
+        div.master-info(layout='column', layout-align='start center')
+            img.avatar(ng-src='{{ $_YuaInfo.masterAvatarUrl }}')
+            div.name {{ $_YuaInfo.masterName }}
+            div.links
+                md-button.md-icon-button.md-raised(ng-if='$_YuaInfo.masterGithubLink', ng-href='{{ $_YuaInfo.masterGithubLink }}', target='_blank', aria-label='github')
+                    span.fa.fa-github(aria-hidden='true')
+                md-button.md-icon-button.md-raised(ng-if='$_YuaInfo.masterGooglePlusLink', ng-href='{{ $_YuaInfo.masterGooglePlusLink }}', target='_blank', aria-label='google-plus')
+                    span.fa.fa-google-plus(aria-hidden='true')
+                md-button.md-icon-button.md-raised(ng-if='$_YuaInfo.masterTwitterLink', ng-href='{{ $_YuaInfo.masterTwitterLink }}', target='_blank', aria-label='twitter')
+                    span.fa.fa-twitter(aria-hidden='true')
+        div(flex)
+        div.copyright-info
+            div Theme by Lialosiu
+            div Powered by YuaNg
+            div Copyright © 2010-{{ $_YuaInfo.copyrightEndYear }}
+
+    div(flex)
+        div.home-header(layout='row', layout-align='start end')
+            div.title {{ $_YuaInfo.title }}
+            div.desc(ng-if='$_YuaInfo.desc') &nbsp;-&nbsp;{{ $_YuaInfo.desc }}
+        div.home-body(ui-view='home.body')
+    div.right-sidebar
