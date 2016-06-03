@@ -1,6 +1,6 @@
 {
-  "name": "yuaNg",
-  "version": "0.0.0",
+  "name": "yua-ng",
+  "version": "1.0.0",
   "dependencies": {
     "angular-animate": "~1.5.3",
     "angular-cookies": "~1.5.3",
@@ -17,7 +17,10 @@
     "moment": "~2.10.6",
     "animate.css": "~3.4.0",
     "angular": "~1.5.3",
-    "font-awesome": "^4.6.3"
+    "font-awesome": "^4.6.3",
+    "angular-utf8-base64": "^0.0.5",
+    "immutable": "^3.8.1",
+    "angular-marked": "^1.2.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"

@@ -1,3 +1,5 @@
+import {HomepageController} from "./state/home/homepage/homepage";
+
 /** @ngInject */
 export function routerConfig($stateProvider: angular.ui.IStateProvider,
                              $urlRouterProvider: angular.ui.IUrlRouterProvider) {
@@ -13,9 +15,9 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider,
             url: '/',
             views: {
                 'home.body': {
-                    templateUrl: 'app/state/home/homepage/homepage.html'
-                    // controller: 'MainController',
-                    // controllerAs: 'main'
+                    templateUrl: 'app/state/home/homepage/homepage.html',
+                    controller: HomepageController,
+                    controllerAs: 'ctrl'
                 }
             }
         }

@@ -1,4 +1,8 @@
 import IHttpPromiseCallbackArg = angular.IHttpPromiseCallbackArg;
+import {EnvConstants} from "./../EnvConstants";
+import {IYuaConf} from "../interface/Yua/IYuaConf";
+import {IGithubContent} from "../interface/Github/IGithubContent";
+
 export class YuaInfoService {
     public title: string;
     public desc: string;
@@ -11,15 +15,9 @@ export class YuaInfoService {
     public copyrightEndYear: string;
 
     /** @ngInject */
-    constructor(private $http: angular.IHttpService, private envConstants: any, private $log: angular.ILogService) {
-        this.title = 'Lialosiu\'s Yua';
-        this.desc = 'a yua blog';
-        this.masterName = 'Lialosiu';
-        this.masterAvatarUrl = 'https://avatars.githubusercontent.com/u/1682158?v=3';
-        this.masterGithubLink = 'https://github.com/lialosiu';
-        this.masterGooglePlusLink = 'https://plus.google.com/+WakatatsuRyou';
-        this.masterTwitterLink = 'https://twitter.com/lialosiu';
-
+    constructor(private $http: angular.IHttpService,
+                private $log: angular.ILogService,
+                private base64: IBase64Service) {
         this.copyrightStartYear = '2010';
         this.copyrightEndYear = moment(new Date()).format('YYYY');
 
@@ -27,8 +25,21 @@ export class YuaInfoService {
     }
 
     getInfo() {
-        this.$http.get(this.envConstants.GITHUB_REPO_API).then((thenRsp: IHttpPromiseCallbackArg<any>): any => {
-            this.$log.debug(thenRsp);
-        })
+        this.$http.get(`https://raw.githubusercontent.com/${EnvConstants.GITHUB_REPO_NAME}/master/conf.json`)
+            .then((thenRsp: IHttpPromiseCallbackArg<any>): any => {
+                let conf: IYuaConf = thenRsp.data;
+                this.title = conf.SITE_TITLE;
+                this.desc = conf.SITE_DESC;
+                this.masterName = conf.MASTER_NAME;
+                this.masterAvatarUrl = conf.MASTER_AVATAR_URL;
+                this.masterGithubLink = conf.MASTER_LINK_GITHUB;
+                this.masterGooglePlusLink = conf.MASTER_LINK_GOOGLE_PLUS;
+                this.masterTwitterLink = conf.MASTER_LINK_TWITTER;
+            });
     }
+}
+
+interface IBase64Service {
+    decode: (a: string) => string;
+    encode: (b: string) => string;
 }

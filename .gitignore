@@ -8,4 +8,4 @@ dist/
 
 typings/
 
-src/app/envConstants.ts
+src/app/EnvConstants.ts

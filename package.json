@@ -1,6 +1,6 @@
 {
-  "name": "yuaNg",
-  "version": "0.0.0",
+  "name": "yua-ng",
+  "version": "1.0.0",
   "dependencies": {},
   "scripts": {
     "test": "gulp test"

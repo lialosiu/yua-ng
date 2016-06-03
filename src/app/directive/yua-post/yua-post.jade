@@ -1,10 +1,10 @@
 div._directive_-yua-post
     div.yua-post
         div.header(layout='row', layout-align='start center')
-            div.title {{ ctrl.title || '[TITLE]' }}
+            div.title(ng-bind-html='ctrl.title')
             div(flex)
-            div.time {{ ctrl.time }}
+            div.time(ng-bind-html='ctrl.time')
         div.body
-            div.content {{ ctrl.content || '[CONTENT]'}}
+            div.content(ng-bind-html='ctrl.content')
         //div.footer
         //    div.meta META

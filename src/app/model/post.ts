@@ -1,20 +1,18 @@
+import {EnvConstants} from "../EnvConstants";
+import IHttpPromiseCallbackArg = angular.IHttpPromiseCallbackArg;
+import IHttpService = angular.IHttpService;
+
 export class Post {
-    get content(): string {
-        return this._content;
-    }
+    public id: string;
+    public path: string;
+    public title: string;
+    public time: string;
+    public content: string;
+    public isSynced: boolean;
 
-    set content(value: string) {
-        this._content = value;
+    constructor(id: string, path: string) {
+        this.id = id;
+        this.path = path;
+        this.isSynced = false;
     }
-
-    get title(): string {
-        return this._title;
-    }
-
-    set title(value: string) {
-        this._title = value;
-    }
-
-    private _title: string;
-    private _content: string;
 }
