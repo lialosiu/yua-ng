@@ -1,7 +1,3 @@
-import {EnvConstants} from "../EnvConstants";
-import IHttpPromiseCallbackArg = angular.IHttpPromiseCallbackArg;
-import IHttpService = angular.IHttpService;
-
 export class Post {
     public id: string;
     public path: string;
@@ -11,8 +7,8 @@ export class Post {
     public isSynced: boolean;
 
     constructor(id: string, path: string) {
-        this.id = id;
-        this.path = path;
+        this.id       = id;
+        this.path     = path;
         this.isSynced = false;
     }
 }

@@ -1,7 +1,6 @@
 import IHttpPromiseCallbackArg = angular.IHttpPromiseCallbackArg;
 import {EnvConstants} from "./../EnvConstants";
 import {IYuaConf} from "../interface/Yua/IYuaConf";
-import {IGithubContent} from "../interface/Github/IGithubContent";
 
 export class YuaInfoService {
     public title: string;
@@ -16,8 +15,7 @@ export class YuaInfoService {
 
     /** @ngInject */
     constructor(private $http: angular.IHttpService,
-                private $log: angular.ILogService,
-                private base64: IBase64Service) {
+                private $log: angular.ILogService) {
         this.copyrightStartYear = '2010';
         this.copyrightEndYear = moment(new Date()).format('YYYY');
 
