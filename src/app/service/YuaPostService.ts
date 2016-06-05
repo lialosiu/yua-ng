@@ -27,9 +27,9 @@ export class YuaPostService {
                 let _contents: IGithubContent[]      = thenRsp.data;
                 let contents: List<Map<string, any>> = Immutable.fromJS(_contents);
                 contents                             = contents.sort((a: Map<string, any>, b: Map<string, any>) => {
-                    if (a.get('name') < b.get('name')) {
+                    if (parseInt(a.get('name')) < parseInt(b.get('name'))) {
                         return 1;
-                    } else if (a.get('name') > b.get('name')) {
+                    } else if (parseInt(a.get('name')) > parseInt(b.get('name'))) {
                         return -1;
                     } else {
                         return 0;
@@ -55,8 +55,9 @@ export class YuaPostService {
                     let mTitle = header.match(/title:(.*)/);
                     post.title = mTitle ? mTitle[1] : null;
 
+                    let mDate = header.match(/date:(.*)/);
                     let mTime = header.match(/time:(.*)/);
-                    post.time = mTime ? mTime[1] : null;
+                    post.time = mDate ? mDate[1] : (mTime ? mTime[1] : null);
 
                     post.content = post.content.substring(i + 3).trim();
                 }
