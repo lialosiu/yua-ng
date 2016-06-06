@@ -15,18 +15,18 @@ export class YuaPostService {
     constructor(private $http: angular.IHttpService,
                 private $q: angular.IQService,
                 private marked: any) {
-        this.isReady            = false;
+        this.isReady = false;
         this.postNameOrderIndex = [];
-        this.posts              = [];
+        this.posts = [];
         this.getPostList();
     }
 
     getPostList() {
         this.$http.get(`https://api.github.com/repos/${EnvConstants.GITHUB_REPO_NAME}/contents/posts`)
             .then((thenRsp: IHttpPromiseCallbackArg<any>): any => {
-                let _contents: IGithubContent[]      = thenRsp.data;
+                let _contents: IGithubContent[] = thenRsp.data;
                 let contents: List<Map<string, any>> = Immutable.fromJS(_contents);
-                contents                             = contents.sort((a: Map<string, any>, b: Map<string, any>) => {
+                contents = contents.sort((a: Map<string, any>, b: Map<string, any>) => {
                     if (parseInt(a.get('name')) < parseInt(b.get('name'))) {
                         return 1;
                     } else if (parseInt(a.get('name')) > parseInt(b.get('name'))) {
@@ -39,7 +39,7 @@ export class YuaPostService {
                     let post = new Post(v.get('sha'), v.get('path'));
                     this.postNameOrderIndex.push(post.id);
                     this.posts[post.id] = post;
-                    this.isReady        = true;
+                    this.isReady = true;
                 });
             });
     }
@@ -48,7 +48,7 @@ export class YuaPostService {
         return this.$http.get(`https://raw.githubusercontent.com/${EnvConstants.GITHUB_REPO_NAME}/master/${post.path}/content.md`)
             .then((thenRsp: IHttpPromiseCallbackArg<any>): any => {
                 post.content = thenRsp.data;
-                let i        = post.content.search(/^---$/m);
+                let i = post.content.search(/^---$/m);
                 if (i !== -1) {
                     let header = post.content.substring(0, i);
 
@@ -72,7 +72,7 @@ export class YuaPostService {
                     return match;
                 });
 
-                post.content  = this.marked(post.content);
+                post.content = this.marked(post.content);
                 post.isSynced = true;
             });
     }

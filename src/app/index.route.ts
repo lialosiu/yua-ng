@@ -1,4 +1,5 @@
 import {HomepageController} from "./state/home/homepage/homepage";
+import {AssistanceController} from "./state/home/assistance/assistance";
 
 /** @ngInject */
 export function routerConfig($stateProvider: angular.ui.IStateProvider,
@@ -17,6 +18,15 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider,
                 'home.body': {
                     templateUrl: 'app/state/home/homepage/homepage.html',
                     controller: HomepageController,
+                    controllerAs: 'ctrl'
+                }
+            }
+        }).state('home.assistance', {
+            url: '/assistance',
+            views: {
+                'home.body': {
+                    templateUrl: 'app/state/home/assistance/assistance.html',
+                    controller: AssistanceController,
                     controllerAs: 'ctrl'
                 }
             }
