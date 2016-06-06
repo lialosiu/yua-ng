@@ -28,8 +28,7 @@
 
       hr
         border none
-        border-bottom 1px solid #ccc
-
+        border-bottom 1px dashed #ccc
 
       img
         max-width 100%
@@ -38,16 +37,21 @@
         box-sizing border-box
         background #ddd
         box-shadow 0 0 2px rgba(0 0 0 .5)
-        transition background .3s
+        transition background .3s, transform .3s, padding .3s, box-shadow .3s
+        border 0 solid
         &:hover
-          background #bbb
+          background #fa806b
+          transform rotate(-1deg)
+          padding 4px
+          box-shadow 0 0 10px #fa806b
 
       code
         background #eee
-        color #dc4e2d
+        color #b03215
         padding 2px 5px
         margin 0 2px
         border-radius 3px
+        word-break break-word
 
       pre
         margin 0 -15px 0 -20px

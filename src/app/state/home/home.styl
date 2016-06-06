@@ -47,6 +47,7 @@
     top 0
     left 200px
     right 0
+    z-index 10
     .title
       font-size 1.3em
     .desc
@@ -55,3 +56,33 @@
   .home-body
     padding-top 25px
     margin 25px
+
+  .right-sidebar
+    margin 60px 0 0 0
+    .item-block
+      margin 20px 0
+      box-shadow 1px 2px 10px rgba(0, 0, 0, .5)
+      a
+        display block
+        text-decoration none
+        border 1px solid #bbb
+        padding 3px
+        background #fff
+        transition background .3s
+        &:hover
+          background #ffc978
+      img
+        display block
+        width 180px
+        max-width 100%
+        height auto
+        margin 0
+
+  @media(max-width 640px)
+    .left-sidebar
+      display none
+    .home-header
+      left 0
+  @media(max-width 960px)
+    .right-sidebar
+      display none

@@ -18,11 +18,16 @@ div._state_home(layout-fill, layout='row', layout-align='start stretch')
         div.copyright-info
             div Theme by Lialosiu
             div Powered by YuaNg
+            div Hosted on Github
             div Copyright © 2010-{{ $_YuaInfo.copyrightEndYear }}
 
-    md-content(flex)
-        div.home-header(layout='row', layout-align='start end')
-            div.title {{ $_YuaInfo.title }}
-            div.desc(ng-if='$_YuaInfo.desc') &nbsp;-&nbsp;{{ $_YuaInfo.desc }}
-        div.home-body(ui-view='home.body')
-    div.right-sidebar
+    md-content(flex, layout='row')
+        div(flex, layout='column')
+            div.home-header(layout='row', layout-align='start end')
+                div.title {{ $_YuaInfo.title }}
+                div.desc(ng-if='$_YuaInfo.desc') &nbsp;-&nbsp;{{ $_YuaInfo.desc }}
+            div.home-body(ui-view='home.body')
+        div.right-sidebar
+            div.item-block(ng-repeat='item in $_YuaInfo.rightSidebarItems')
+                a(ng-href='{{ item.href }}', target='_blank')
+                    img(ng-src='{{ item.image }}', alt='{{ item.alt }}')

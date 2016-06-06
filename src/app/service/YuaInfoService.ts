@@ -1,6 +1,7 @@
 import IHttpPromiseCallbackArg = angular.IHttpPromiseCallbackArg;
 import {EnvConstants} from "./../EnvConstants";
 import {IYuaConf} from "../interface/Yua/IYuaConf";
+import {IYuaRightSidebarItem} from "../interface/Yua/IYuaRightSidebarItem";
 
 export class YuaInfoService {
     public title: string;
@@ -12,6 +13,7 @@ export class YuaInfoService {
     public masterTwitterLink: string;
     public copyrightStartYear: string;
     public copyrightEndYear: string;
+    public rightSidebarItems: IYuaRightSidebarItem[];
 
     /** @ngInject */
     constructor(private $http: angular.IHttpService,
@@ -33,6 +35,11 @@ export class YuaInfoService {
                 this.masterGithubLink = conf.MASTER_LINK_GITHUB;
                 this.masterGooglePlusLink = conf.MASTER_LINK_GOOGLE_PLUS;
                 this.masterTwitterLink = conf.MASTER_LINK_TWITTER;
+            });
+
+        this.$http.get(`https://raw.githubusercontent.com/${EnvConstants.GITHUB_REPO_NAME}/master/right-sidebar.json`)
+            .then((thenRsp: IHttpPromiseCallbackArg<any>): any => {
+                this.rightSidebarItems = thenRsp.data;
             });
     }
 }
