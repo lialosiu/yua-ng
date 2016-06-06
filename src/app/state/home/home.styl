@@ -36,7 +36,9 @@
         a
           display block
           transition margin-right .3s
-          &:hover
+          &:hover,
+          &.active
+            color #bb0510
             margin-right -10px
     .copyright-info
       text-align center
@@ -83,11 +85,12 @@
         height auto
         margin 0
 
-  @media(max-width 640px)
+  @media (max-width 640px)
     .left-sidebar
       display none
+
     .home-header
       left 0
-  @media(max-width 960px)
+  @media (max-width 960px)
     .right-sidebar
       display none

@@ -13,9 +13,9 @@ div._state_home(layout-fill, layout='row', layout-align='start stretch')
         div.nav-block
             div.nav-title 导航
             div.nav-item
-                a(ui-sref='home.homepage') 博客
+                a(ui-sref='home.homepage', ng-class='{active: $state.current.name === "home.homepage"}') 博客
             div.nav-item
-                a(ui-sref='home.assistance') 应援
+                a(ui-sref='home.assistance', ng-class='{active: $state.current.name === "home.assistance"}') 应援
         div(flex)
         div.copyright-info
             div Theme by Lialosiu
