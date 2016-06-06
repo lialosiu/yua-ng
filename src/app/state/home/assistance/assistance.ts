@@ -1,7 +1,5 @@
 import {Post} from "../../../model/post";
 import {YuaPostService} from "../../../service/YuaPostService";
-import IHttpService = angular.IHttpService;
-import IHttpPromiseCallbackArg = angular.IHttpPromiseCallbackArg;
 import IRootScopeService = angular.IRootScopeService;
 
 export class AssistanceController {

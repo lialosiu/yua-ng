@@ -27,9 +27,9 @@ export class YuaPostService {
                 let _contents: IGithubContent[] = thenRsp.data;
                 let contents: List<Map<string, any>> = Immutable.fromJS(_contents);
                 contents = contents.sort((a: Map<string, any>, b: Map<string, any>) => {
-                    if (parseInt(a.get('name')) < parseInt(b.get('name'))) {
+                    if (parseInt(a.get('name'), 10) < parseInt(b.get('name'), 10)) {
                         return 1;
-                    } else if (parseInt(a.get('name')) > parseInt(b.get('name'))) {
+                    } else if (parseInt(a.get('name'), 10) > parseInt(b.get('name'), 10)) {
                         return -1;
                     } else {
                         return 0;
