@@ -41,11 +41,14 @@ export class YuaPostService {
                     this.posts[post.id] = post;
                     this.isReady = true;
                 });
+                let assistance = new Post('assistance', '/', 'assistance.md');
+                this.posts[assistance.id] = assistance;
+                this.isReady = true;
             });
     }
 
     syncPost(post: Post) {
-        return this.$http.get(`https://raw.githubusercontent.com/${EnvConstants.GITHUB_REPO_NAME}/master/${post.path}/content.md`)
+        return this.$http.get(`https://raw.githubusercontent.com/${EnvConstants.GITHUB_REPO_NAME}/master/${post.path}/${post.fileName}`)
             .then((thenRsp: IHttpPromiseCallbackArg<any>): any => {
                 post.content = thenRsp.data;
                 let i = post.content.search(/^---$/m);
